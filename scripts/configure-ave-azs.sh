@@ -47,11 +47,10 @@ EXTERNAL_HOSTNAME=$(get_setting EXTERNAL_HOSTNAME)
 WORKFLOW=AveConfig
 echo "waiting for AVAMAR $WORKFLOW  to be available"
 ### get the SW Version
-AVE_PASSWORD=$(ip addr | grep -Po '(?!(inet 127.\d.\d.1))(inet \K(\d{1,3}\.){3}\d{1,3})')
 until [[ ! -z $AVE_CONFIG ]]
 do
-AVE_CONFIG=$( /opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" \
- --listrepository localhost 2> /dev/null  \
+AVE_CONFIG=$(/opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" \
+ --listrepository ${AVE_PASSWORD} \
  | grep ${WORKFLOW} | awk  '{print $1}' )
 sleep 5
 printf "."
@@ -60,7 +59,7 @@ done
 
 echo "waiting for ave-config to become ready"
 until [[ $(/opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" \
- --listhistory localhost | grep ave-config | awk  '{print $5}') == "ready" ]]
+ --listhistory ${AVE_PASSWORD} | grep ave-config | awk  '{print $5}') == "ready" ]]
 do
 printf "."
 sleep 5
@@ -80,6 +79,6 @@ AVE_COMMON_PASSWORD="Change_Me12345_"
     --input viewuserpass=${AVE_COMMON_PASSWORD} \
     --input admin_password_os=${AVE_COMMON_PASSWORD} \
     --input root_password_os=${AVE_COMMON_PASSWORD} \
-    localhost
+    ${AVE_PASSWORD}
 
 
