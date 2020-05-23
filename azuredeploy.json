@@ -1022,7 +1022,7 @@
         },
         "AvamarUrl": {
             "type": "string",
-            "value": "[concat('https://', reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress, '/avi')]"
+            "value": "[concat('https://', reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress, '/avi with root:ipaddress')]"
         }
     }
 }
