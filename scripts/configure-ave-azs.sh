@@ -1,5 +1,5 @@
 #!/bin/bash
-# exec &> >(tee -a "install.log")
+exec &> >(tee -a "install.log")
 set -ex
 function retryop()
 {
