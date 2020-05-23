@@ -1,5 +1,5 @@
 #!/bin/bash
-exec &> >(tee -a "install.log")
+# exec &> >(tee -a "install.log")
 set -ex
 function retryop()
 {
@@ -23,7 +23,6 @@ function retryop()
     exit 1
   fi
 }
-tty
 echo "Installing jq"
 curl -s -O -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 chmod 755 jq-linux64
