@@ -128,8 +128,7 @@
         "subnetId": "[concat(variables('vnetId'), '/subnets/', parameters('vnetSubnetName'))]",
         "vnetId": "[resourceId(parameters('vnetExistingResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
         "filesToDownload": [
-            "https://raw.githubusercontent.com/bottkars/azs-concourse/tanzu/ci/scripts/configure-ave-azs.sh",
-            "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64"           
+            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/configure-ave-azs.sh"
         ]
     },
     "resources": [
