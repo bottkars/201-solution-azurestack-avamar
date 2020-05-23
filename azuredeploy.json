@@ -1018,7 +1018,7 @@
     "outputs": {
         "Notes": {
             "type": "string",
-            "value": "Please set up secure gateway to access below URLs."
+            "value": "Avamar Installation System is now running. Please monitor below URL"
         },
         "AvamarUrl": {
             "type": "string",
