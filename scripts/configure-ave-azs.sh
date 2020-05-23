@@ -36,6 +36,12 @@ function get_setting() {
   local value=$(echo $settings | jq ".$key" -r)
   echo "${value}" ## ( use "${VAR}" to retain spaces, KB)
 }
+
+
+until [ -f /var/lib/waagent/CustomDataClear ]
+do
+     sleep 5
+done
 custom_data_file="/var/lib/waagent/CustomDataClear"
 settings=$(cat ${custom_data_file})
 
