@@ -128,6 +128,7 @@
         "subnetId": "[concat(variables('vnetId'), '/subnets/', parameters('vnetSubnetName'))]",
         "vnetId": "[resourceId(parameters('vnetExistingResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
         "filesToDownload": [
+            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/deploy_base.sh",
             "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/configure-ave-azs.sh"
         ]
     },
@@ -147,7 +148,7 @@
                     "timestamp": 2
                 },
                 "protectedSettings": {
-                    "commandToExecute": "[concat('bash -l -c \"./configure-ave-azs.sh 2>&1 | tee /home/', parameters('AVEUsername'), '/install.log\"')]"
+                    "commandToExecute": "[concat('bash -l -c \"./deploy_base.sh.sh 2>&1 | tee /home/', parameters('AVEUsername'), '/install.log\"')]"
                 }
             },
             "dependsOn": [
