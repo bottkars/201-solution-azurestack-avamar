@@ -28,7 +28,8 @@ curl -s -O -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 chmod 755 jq-linux64
 chmod +X  jq-linux64
 mv jq-linux64 /usr/local/bin/jq
-
+export PATH=/opt/emc-tools/bin:$PATH
+printenv
 
 function get_setting() {
   key=$1
