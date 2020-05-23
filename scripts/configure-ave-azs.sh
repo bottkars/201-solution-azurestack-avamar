@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+exec &> >(tee -a "install.log")
 set -ex
 function retryop()
 {
