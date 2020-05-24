@@ -72,6 +72,7 @@ do
 printf "."
 sleep 5
 done
+echo "ave-config ready"
 AVE_TIMEZONE="Europe/Berlin"
 /opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" --install ave-config  \
     --input timezone_name="${AVE_TIMEZONE}" \
@@ -110,7 +111,4 @@ else
     echo "No curlable URL Provided"        
 fi
 
-
-
-# this also installs :-)
-# /opt/emc-tools/bin/avi-cli --user root --password "${AVE_COMMON_PASSWORD}" --install upgrade-client-downloads localhost
+echo "finished deployment"
