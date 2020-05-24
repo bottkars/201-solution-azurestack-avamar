@@ -15,7 +15,7 @@
         },
         "AVECommonPassword": {
             "type": "securestring",
-            "defaultValue": "Changeme123#",
+            "defaultValue": "Change_Me12345_",
             "metadata": {
                 "description": "The password for AVE user."
             }
@@ -27,21 +27,6 @@
                 "description": "Local Uri of the Operations Manager VHD to create Custom image from"
             }
         },
-        "AVEUpgradeClientDownloadsURI": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Curlable URL encoded Link to Avamar UpgradeClientDownloads Package (S3 Shareable or Azure SAS Blob URL)"
-            }
-        },
-        "AVEUpgradeClientDownloadsPackage": {
-            "type": "string",
-            "defaultValue": "UpgradeClientDownloads-19.2.0-155.avp",
-            "metadata": {
-                "description": "FileName of the UpgradeClientDownloads AVP Package"
-            }
-        },
-
         "AVEName": {
             "type": "string",
             "defaultValue": "aveazs1",
@@ -57,6 +42,7 @@
                 "description": "The password for AVE Settings."
             }
         },
+
         "AVESizeInTB": {
             "type": "string",
             "allowedValues": [
@@ -68,8 +54,26 @@
                 "description": "Size of the AVE in TB. Size is Mapped do Standard_DS3_v2 or Standard_D24_v2"
             }
         },
+        "AVEUpgradeClientDownloadsPackage": {
+            "type": "string",
+            "defaultValue": "UpgradeClientDownloads-19.2.0-155.avp",
+            "metadata": {
+                "description": "FileName of the UpgradeClientDownloads AVP Package"
+            }
+        },
+        "AVEUpgradeClientDownloadsURI": {
+            "type": "string",
+            "defaultValue": "https://opsmanagerimage.blob.local.azurestack.exter
+nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202
+0-05-30T13:42:54Z&st=2020-05-24T05:42:54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P
+s%3D",
+            "metadata": {
+                "description": "Curlable URL encoded Link to Avamar UpgradeClientDownloads Package (S3 Shareable or Azure SAS Blob URL)"
+            }
+        },
         "AVEUsername": {
             "type": "string",
+            "defaultValue": "avamaruser",
             "metadata": {
                 "description": "The username for AVE."
             }
