@@ -27,6 +27,21 @@
                 "description": "Local Uri of the Operations Manager VHD to create Custom image from"
             }
         },
+        "AVEUpgradeClientDownloadsURI": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Curlable URL encoded Link to Avamar UpgradeClientDownloads Package (S3 Shareable or Azure SAS Blob URL)"
+            }
+        },
+        "AVEUpgradeClientDownloadsPackage": {
+            "type": "string",
+            "defaultValue": "UpgradeClientDownloads-19.2.0-155.avp",
+            "metadata": {
+                "description": "FileName of the UpgradeClientDownloads AVP Package"
+            }
+        },
+
         "AVEName": {
             "type": "string",
             "defaultValue": "aveazs1",
@@ -50,7 +65,7 @@
             ],
             "defaultValue": "2",
             "metadata": {
-                "description": "The virtual machine size of the AVE in TB: 2TB is mapped to Standard_A5, and 4TB is mapped to Standard_A6."
+                "description": ""
             }
         },
         "AVEUsername": {
@@ -112,7 +127,7 @@
         "aveNsg": "[concat(parameters('AVEName'), '-nsg')]",
         "aveOSDisk": "[concat(parameters('AVEName'), '-osdisk')]",
         "aveVersion": "[replace(parameters('AVEVhd'),'.vhd', '')]",
-        "aveVmSize": "[if(equals(parameters('AVESizeInTB'), '2'), 'Standard_A5', 'Standard_A6')]",
+        "aveVmSize": "[if(equals(parameters('AVESizeInTB'), '2'), 'Standard_DS3_v2', 'Standard_DS4_v2')]",
         "linuxConfiguration": {
             "disablePasswordAuthentication": true,
             "ssh": {
@@ -1004,6 +1019,8 @@
                 "parameters": {
                     "customData": {
                         "value": {
+                            "AVE_UPGRADE_CLIENT_DOWNLOADS_URL": "[parameters('AVEUpgradeClientDownloadsURI')]",
+                            "AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE": "[parameters('AVEUpgradeClientDownloadsPackage')]",
                             "AVE_COMMON_PASSWORD": "[parameters('AVECommonPassword')]",
                             "AVE_PASSWORD": "[reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress]",
                             "EXTERNAL_HOSTNAME": "[variables('AVEexternalHostname')]"
@@ -1022,7 +1039,7 @@
         },
         "AvamarUrl": {
             "type": "string",
-            "value": "[concat('https://', reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress, '/avi with root:ipaddress')]"
+            "value": "[concat('https://', reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress, '/avi')]"
         }
     }
 }
