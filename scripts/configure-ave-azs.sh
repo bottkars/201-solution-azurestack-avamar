@@ -1,7 +1,7 @@
 #!/bin/bash
 exec &> >(tee -a /root/install.log)
 exec 2>&1
-set -ex
+set -e
 function retryop()
 {
   retry=0
