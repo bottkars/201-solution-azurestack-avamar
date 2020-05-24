@@ -65,7 +65,7 @@
             ],
             "defaultValue": "2",
             "metadata": {
-                "description": ""
+                "description": "Size of the AVE in TB. Size is Mapped do Standard_DS3_v2 or Standard_D24_v2"
             }
         },
         "AVEUsername": {
