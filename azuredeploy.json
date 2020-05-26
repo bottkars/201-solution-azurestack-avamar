@@ -13,21 +13,21 @@
                 "description": "Type of authentication to use on the Virtual Machine. SSH key is recommended."
             }
         },
-        "AVECommonPassword": {
+        "aveCommonPassword": {
             "type": "securestring",
             "defaultValue": "Change_Me12345_",
             "metadata": {
                 "description": "The password for AVE user."
             }
         },
-        "AVEImageURI": {
+        "aveImageURI": {
             "type": "string",
             "defaultValue": "https://opsmanagerimage.blob.local.azurestack.external/images/AZURE-AVE-19.2.0.155.vhd",
             "metadata": {
                 "description": "Local Uri of the Operations Manager VHD to create Custom image from"
             }
         },
-        "AVEName": {
+        "aveName": {
             "type": "string",
             "defaultValue": "aveazs1",
             "maxLength": 10,
@@ -35,15 +35,25 @@
                 "description": "Name of the AVE virtual machine"
             }
         },
-        "AVEPasswordOrKey": {
+        "aveNetworkInterfaceType": {
+            "type": "string",
+            "metadata": {
+                "description": "Do we want to Connect AVE with Public IP ?"
+            },
+            "allowedValues": [
+                "Public",
+                "Private"
+            ]
+        },
+
+        "avePasswordOrKey": {
             "type": "securestring",
             "defaultValue": "Change_Me12345_",
             "metadata": {
                 "description": "The password for AVE Settings."
             }
         },
-
-        "AVESizeInTB": {
+        "aveSizeInTB": {
             "type": "string",
             "allowedValues": [
                 "2",
@@ -54,35 +64,39 @@
                 "description": "Size of the AVE in TB. Size is Mapped do Standard_DS3_v2 or Standard_D24_v2"
             }
         },
-        "AVEUpgradeClientDownloadsPackage": {
+        "aveUpgradeClientDownloadsPackage": {
             "type": "string",
             "defaultValue": "UpgradeClientDownloads-19.2.0-155.avp",
             "metadata": {
                 "description": "FileName of the UpgradeClientDownloads AVP Package"
             }
         },
-        "AVEUpgradeClientDownloadsURI": {
+        "aveUpgradeClientDownloadsURI": {
             "type": "string",
             "defaultValue": "https://opsmanagerimage.blob.local.azurestack.exter
-nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202
-0-05-30T13:42:54Z&st=2020-05-24T05:42:54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P
-s%3D",
+            nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202
+            0-05-30T13:
+            42:
+            54Z&st=2020-05-24T05:
+            42: 54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P
+            s%3D",
             "metadata": {
                 "description": "Curlable URL encoded Link to Avamar UpgradeClientDownloads Package (S3 Shareable or Azure SAS Blob URL)"
             }
         },
-        "AVEUsername": {
+        "aveUsername": {
             "type": "string",
             "defaultValue": "avamaruser",
             "metadata": {
                 "description": "The username for AVE."
             }
         },
-        "AVEVhd": {
+
+        "aveVhd": {
             "type": "string",
             "defaultValue": "AZURE-AVE-19.2.0.155.vhd",
             "metadata": {
-                "description": "AVEn VHD Name"
+                "description": "AVE VHD Name"
             }
 
         },
@@ -120,41 +134,54 @@ s%3D",
             "metadata": {
                 "description": "The name of the existing subnet that AVE/DDVE will be connected to."
             }
+        },
+        "aveTimeZone": {
+            "type": "string",
+            "defaultValue": "Europe/Berlin",
+            "allowedValues": [ "Africa/Abidjan","Africa/Accra","Africa/Addis_Ababa","Africa/Algiers","Africa/Asmara","Africa/Asmera","Africa/Bamako","Africa/Bangui","Africa/Banjul","Africa/Bissau","Africa/Blantyre","Africa/Brazzaville","Africa/Bujumbura","Africa/Cairo","Africa/Casablanca","Africa/Ceuta","Africa/Conakry","Africa/Dakar","Africa/Dar_es_Salaam","Africa/Djibouti","Africa/Douala","Africa/El_Aaiun","Africa/Freetown","Africa/Gaborone","Africa/Harare","Africa/Johannesburg","Africa/Kampala","Africa/Khartoum","Africa/Kigali","Africa/Kinshasa","Africa/Lagos","Africa/Libreville","Africa/Lome","Africa/Luanda","Africa/Lubumbashi","Africa/Lusaka","Africa/Malabo","Africa/Maputo","Africa/Maseru","Africa/Mbabane","Africa/Mogadishu","Africa/Monrovia","Africa/Nairobi","Africa/Ndjamena","Africa/Niamey","Africa/Nouakchott","Africa/Ouagadougou","Africa/Porto-Novo","Africa/Sao_Tome","Africa/Timbuktu","Africa/Tripoli","Africa/Tunis","Africa/Windhoek","America/Adak","America/Anchorage","America/Anguilla","America/Antigua","America/Araguaina","America/Aruba","America/Asuncion","America/Barbados","America/Belem","America/Belize","America/Boa_Vista","America/Bogota","America/Boise","America/Buenos_Aires","America/Cambridge_Bay","America/Cancun","America/Caracas","America/Catamarca","America/Cayenne","America/Cayman","America/Chicago","America/Chihuahua","America/Cordoba","America/Costa_Rica","America/Cuiaba","America/Curacao","America/Danmarkshavn","America/Dawson","America/Dawson_Creek","America/Denver","America/Detroit","America/Dominica","America/Edmonton","America/Eirunepe","America/El_Salvador","America/Fortaleza","America/Glace_Bay","America/Godthab","America/Goose_Bay","America/Grand_Turk","America/Grenada","America/Guadeloupe","America/Guatemala","America/Guayaquil","America/Guyana","America/Halifax","America/Havana","America/Hermosillo","America/Indiana/Indianapolis","America/Indiana/Knox","America/Indiana/Marengo","America/Indiana/Vevay","America/Indianapolis","America/Inuvik","America/Iqaluit","America/Jamaica","America/Jujuy","America/Juneau","America/Kentucky/Louisville","America/Kentucky/Monticello","America/La_Paz","America/Lima","America/Los_Angeles","America/Louisville","America/Maceio","America/Managua","America/Manaus","America/Martinique","America/Mazatlan","America/Mendoza","America/Menominee","America/Merida","America/Mexico_City","America/Miquelon","America/Monterrey","America/Montevideo","America/Montreal","America/Montserrat","America/Nassau","America/New_York","America/Nipigon","America/Nome","America/Noronha","America/North_Dakota/Center","America/Panama","America/Pangnirtung","America/Paramaribo","America/Phoenix","America/Port-au-Prince","America/Port_of_Spain","America/Porto_Velho","America/Puerto_Rico","America/Rainy_River","America/Rankin_Inlet","America/Recife","America/Regina","America/Rio_Branco","America/Rosario","America/Santiago","America/Santo_Domingo","America/Sao_Paulo","America/Scoresbysund","America/Shiprock","America/St_Johns","America/St_Kitts","America/St_Lucia","America/St_Thomas","America/St_Vincent","America/Swift_Current","America/Tegucigalpa","America/Thule","America/Thunder_Bay","America/Tijuana","America/Tortola","America/Vancouver","America/Whitehorse","America/Winnipeg","America/Yakutat","America/Yellowknife","Antarctica/Casey","Antarctica/Davis","Antarctica/DumontDUrville","Antarctica/Mawson","Antarctica/McMurdo","Antarctica/Palmer","Antarctica/South_Pole","Antarctica/Syowa","Antarctica/Vostok","Arctic/Longyearbyen","Asia/Aden","Asia/Almaty","Asia/Amman","Asia/Anadyr","Asia/Aqtau","Asia/Aqtobe","Asia/Ashgabat","Asia/Baghdad","Asia/Bahrain","Asia/Baku","Asia/Bangkok","Asia/Beirut","Asia/Bishkek","Asia/Brunei","Asia/Choibalsan","Asia/Chongqing","Asia/Chungking","Asia/Colombo","Asia/Damascus","Asia/Dhaka","Asia/Dili","Asia/Dubai","Asia/Dushanbe","Asia/Gaza","Asia/Harbin","Asia/Hong_Kong","Asia/Hovd","Asia/Irkutsk","Asia/Istanbul","Asia/Jakarta","Asia/Jayapura","Asia/Jerusalem","Asia/Kabul","Asia/Kamchatka","Asia/Karachi","Asia/Kashgar","Asia/Katmandu","Asia/Kolkata","Asia/Krasnoyarsk","Asia/Kuala_Lumpur","Asia/Kuching","Asia/Kuwait","Asia/Macao","Asia/Macau","Asia/Magadan","Asia/Makassar","Asia/Manila","Asia/Muscat","Asia/Nicosia","Asia/Novosibirsk","Asia/Omsk","Asia/Oral","Asia/Phnom_Penh","Asia/Pontianak","Asia/Pyongyang","Asia/Qatar","Asia/Qyzylorda","Asia/Rangoon","Asia/Riyadh","Asia/Saigon","Asia/Sakhalin","Asia/Samarkand","Asia/Seoul","Asia/Shanghai","Asia/Singapore","Asia/Taipei","Asia/Tashkent","Asia/Tbilisi","Asia/Tehran","Asia/Thimphu","Asia/Tokyo","Asia/Ujung_Pandang","Asia/Ulaanbaatar","Asia/Urumqi","Asia/Vientiane","Asia/Vladivostok","Asia/Yakutsk","Asia/Yekaterinburg","Asia/Yerevan","Atlantic/Azores","Atlantic/Bermuda","Atlantic/Canary","Atlantic/Cape_Verde","Atlantic/Faeroe","Atlantic/Faroe","Atlantic/Jan_Mayen","Atlantic/Madeira","Atlantic/Reykjavik","Atlantic/South_Georgia","Atlantic/St_Helena","Atlantic/Stanley","Australia/ACT","Australia/Adelaide","Australia/Brisbane","Australia/Broken_Hill","Australia/Darwin","Australia/Eucla","Australia/Hobart","Australia/Lindeman","Australia/Lord_Howe","Australia/Melbourne","Australia/North","Australia/NSW","Australia/Perth","Australia/Queensland","Australia/South","Australia/Sydney","Australia/Tasmania","Australia/Victoria","Australia/Yancowinna","Europe/Amsterdam","Europe/Andorra","Europe/Athens","Europe/Belfast","Europe/Belgrade","Europe/Berlin","Europe/Bratislava","Europe/Brussels","Europe/Bucharest","Europe/Budapest","Europe/Chisinau","Europe/Copenhagen","Europe/Dublin","Europe/Gibraltar","Europe/Helsinki","Europe/Istanbul","Europe/Kaliningrad","Europe/Kiev","Europe/Lisbon","Europe/Ljubljana","Europe/London","Europe/Luxembourg","Europe/Madrid","Europe/Malta","Europe/Minsk","Europe/Monaco","Europe/Moscow","Europe/Nicosia","Europe/Oslo","Europe/Paris","Europe/Prague","Europe/Riga","Europe/Rome","Europe/Samara","Europe/San_Marino","Europe/Sarajevo","Europe/Simferopol","Europe/Skopje","Europe/Sofia","Europe/Stockholm","Europe/Tallinn","Europe/Tirane","Europe/Uzhgorod","Europe/Vaduz","Europe/Vatican","Europe/Vienna","Europe/Vilnius","Europe/Warsaw","Europe/Zagreb","Europe/Zaporozhye","Europe/Zurich","Indian/Antananarivo","Indian/Chagos","Indian/Christmas","Indian/Cocos","Indian/Comoro","Indian/Kerguelen","Indian/Mahe","Indian/Maldives","Indian/Mauritius","Indian/Mayotte","Indian/Reunion","Pacific/Apia","Pacific/Auckland","Pacific/Chatham","Pacific/Easter","Pacific/Efate","Pacific/Enderbury","Pacific/Fakaofo","Pacific/Fiji","Pacific/Funafuti","Pacific/Galapagos","Pacific/Gambier","Pacific/Guadalcanal","Pacific/Guam","Pacific/Honolulu","Pacific/Johnston","Pacific/Kiritimati","Pacific/Kosrae","Pacific/Kwajalein","Pacific/Majuro","Pacific/Marquesas","Pacific/Midway","Pacific/Nauru","Pacific/Niue","Pacific/Norfolk","Pacific/Noumea","Pacific/Pago_Pago","Pacific/Palau","Pacific/Pitcairn","Pacific/Ponape","Pacific/Port_Moresby","Pacific/Rarotonga","Pacific/Saipan","Pacific/Tahiti","Pacific/Tarawa","Pacific/Tongatapu","Pacific/Truk","Pacific/Wake","Pacific/Wallis","Pacific/Yap","UTC"],
+            "metadata": {
+                "description": "Timezone for Avamar Appliance"
+            }
         }
     },
     "variables": {
-        "AVEExternalHostname": "node",
         "apiVersion": "2017-06-01",
-        "aveDataDisk": "[concat(parameters('AVEName'), '-datadisk')]",
+        "aveDataDisk": "[concat(parameters('aveName'), '-datadisk')]",
         "aveDataDiskSize": 931,
-        "aveNIC": "[concat(parameters('AVEName'), '-nic-0')]",
-        "aveNsg": "[concat(parameters('AVEName'), '-nsg')]",
-        "aveOSDisk": "[concat(parameters('AVEName'), '-osdisk')]",
-        "aveVersion": "[replace(parameters('AVEVhd'),'.vhd', '')]",
-        "aveVmSize": "[if(equals(parameters('AVESizeInTB'), '2'), 'Standard_DS3_v2', 'Standard_DS4_v2')]",
+        "aveExternalHostname": "node",
+        "aveIPAllocationMethod": "Static",
+        "aveNicName": "[concat(parameters('aveName'), '-nic-0')]",
+        "aveNsg": "[concat(parameters('aveName'), '-nsg')]",
+        "aveOSDisk": "[concat(parameters('aveName'), '-osdisk')]",
+        "avePublicIP": {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses',Concat(variables('aveNicName'),'-pip'))]"
+        },
+        "avePublicIPName": "[concat(variables('aveNicName'),'-pip')]",
+        "aveVersion": "[replace(parameters('aveVhd'),'.vhd', '')]",
+        "aveVmSize": "[if(equals(parameters('aveSizeInTB'), '2'), 'Standard_DS3_v2', 'Standard_DS4_v2')]",
+        "filesToDownload": [
+            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/deploy_base.sh",
+            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/configure-ave-azs.sh"
+        ],
         "linuxConfiguration": {
             "disablePasswordAuthentication": true,
             "ssh": {
                 "publicKeys": [
                     {
-                        "path": "[concat('/home/', parameters('AVEUsername'), '/.ssh/authorized_keys')]",
-                        "keyData": "[parameters('AVEPasswordOrKey')]"
+                        "path": "[concat('/home/', parameters('aveUserName'), '/.ssh/authorized_keys')]",
+                        "keyData": "[parameters('avePasswordOrKey')]"
                     }
                 ]
             }
         },
-        "numAveDataDisks": "[if(equals(parameters('AVESizeInTB'), '2'), 3, 6)]",
+        "numAveDataDisks": "[if(equals(parameters('aveSizeInTB'), '2'), 3, 6)]",
         "subnetId": "[concat(variables('vnetId'), '/subnets/', parameters('vnetSubnetName'))]",
-        "vnetId": "[resourceId(parameters('vnetExistingResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-        "filesToDownload": [
-            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/deploy_base.sh",
-            "https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/scripts/configure-ave-azs.sh"
-        ]
+        "vnetId": "[resourceId(parameters('vnetExistingResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('AVEName'),'/initvm')]",
+            "name": "[concat(parameters('aveName'),'/initvm')]",
             "apiVersion": "2017-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -167,16 +194,16 @@ s%3D",
                     "timestamp": 2
                 },
                 "protectedSettings": {
-                    "commandToExecute": "[concat('bash -l -c \"./deploy_base.sh 2>&1 | tee /home/', parameters('AVEUsername'), '/install.log\"')]"
+                    "commandToExecute": "[concat('bash -l -c \"./deploy_base.sh 2>&1 | tee /home/', parameters('aveUserName'), '/install.log\"')]"
                 }
             },
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('AVEName'))]"
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('aveName'))]"
             ]
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('AVEName')]",
+            "name": "[parameters('aveName')]",
             "apiVersion": "2017-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -185,7 +212,7 @@ s%3D",
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "id": "[resourceId('Microsoft.Compute/images', variables('AVEVersion'))]"
+                        "id": "[resourceId('Microsoft.Compute/images', variables('aveVersion'))]"
                     },
                     "osDisk": {
                         "name": "[variables('aveOSDisk')]",
@@ -212,16 +239,16 @@ s%3D",
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[parameters('AVEName')]",
-                    "adminUsername": "[parameters('AVEUsername')]",
-                    "adminPassword": "[parameters('AVEPasswordOrKey')]",
+                    "computerName": "[parameters('aveName')]",
+                    "adminUsername": "[parameters('aveUserName')]",
+                    "adminPassword": "[parameters('avePasswordOrKey')]",
                     "customData": "[reference('Microsoft.Resources/deployments/generate-customdata', '2015-01-01').outputs.customData.value]",
                     "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('aveNIC'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('aveNicName'))]"
                         }
                     ]
                 },
@@ -233,15 +260,19 @@ s%3D",
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', variables('aveNIC'))]",
-                "[concat('Microsoft.Compute/images/', variables('AVEVersion'))]"
+                "[resourceId('Microsoft.Network/networkInterfaces', variables('aveNicName'))]",
+                "[concat('Microsoft.Compute/images/', variables('aveVersion'))]"
             ]
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('aveNIC')]",
+            "name": "[variables('aveNicName')]",
             "apiVersion": "2017-10-01",
             "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', variables('aveNsg'))]",
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('aveNicName'),'-pip')]"
+            ],
             "properties": {
                 "ipConfigurations": [
                     {
@@ -251,17 +282,15 @@ s%3D",
                             "subnet": {
                                 "id": "[variables('subnetId')]"
                             },
-                            "privateIPAddressVersion": "IPv4"
+                            "privateIPAddressVersion": "IPv4",
+                            "publicIPAddress": "[if(equals(parameters('aveNetworkInterfaceType'),'Public'), variables('avePublicIP'), json('null'))]"
                         }
                     }
                 ],
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('aveNsg'))]"
                 }
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', variables('aveNsg'))]"
-            ]
+            }
         },
         {
             "type": "Microsoft.Network/networkSecurityGroups",
@@ -990,9 +1019,25 @@ s%3D",
             ]
         },
         {
+            "apiVersion": "2017-04-01",
+            "condition": "[equals(parameters('aveNetworkInterfaceType'),'Public')]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('avePublicIPName')]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[Concat(variables('aveNicName'),'-pip')]"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "[variables('aveIPAllocationMethod')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[Concat(variables('aveNicName'),'-pip')]"
+                }
+            }
+        },
+        {
             "type": "Microsoft.Compute/images",
             "apiVersion": "2017-12-01",
-            "name": "[variables('AVEVersion')]",
+            "name": "[variables('aveVersion')]",
             "location": "[resourceGroup().location]",
             "tags": {
                 "provisioner": "dps_ave_azurestack_template"
@@ -1002,7 +1047,7 @@ s%3D",
                     "osDisk": {
                         "osType": "Linux",
                         "osState": "Generalized",
-                        "blobUri": "[parameters('AVEImageURI')]",
+                        "blobUri": "[parameters('aveImageURI')]",
                         "storageAccountType": "Standard_LRS",
                         "caching": "ReadWrite",
                         "diskSizeGB": 200
@@ -1023,11 +1068,13 @@ s%3D",
                 "parameters": {
                     "customData": {
                         "value": {
-                            "AVE_UPGRADE_CLIENT_DOWNLOADS_URL": "[parameters('AVEUpgradeClientDownloadsURI')]",
-                            "AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE": "[parameters('AVEUpgradeClientDownloadsPackage')]",
-                            "AVE_COMMON_PASSWORD": "[parameters('AVECommonPassword')]",
-                            "AVE_PASSWORD": "[reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress]",
-                            "EXTERNAL_HOSTNAME": "[variables('AVEexternalHostname')]"
+                            "AVE_TIMEZONE": "[parameters('aveTimeZone')]",
+                            "AVE_UPGRADE_CLIENT_DOWNLOADS_URL": "[parameters('aveUpgradeClientDownloadsURI')]",
+                            "AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE": "[parameters('aveUpgradeClientDownloadsPackage')]",
+                            "AVE_COMMON_PASSWORD": "[parameters('aveCommonPassword')]",
+                            "AVE_PASSWORD": "[reference(variables('aveNicName')).ipConfigurations[0].properties.privateIPAddress]",
+                            "AVE_EXTERNAL_FQDN": "[reference(variables('aveNicName')).ipConfigurations[0].properties.publicIPAddress.properties.dnsSettings.fqdn]",
+                            "EXTERNAL_HOSTNAME": "[variables('aveExternalHostname')]"
                         }
                     }
                 }
@@ -1043,7 +1090,7 @@ s%3D",
         },
         "AvamarUrl": {
             "type": "string",
-            "value": "[concat('https://', reference(variables('aveNIC')).ipConfigurations[0].properties.privateIPAddress, '/avi')]"
+            "value": "[concat('https://', reference(variables('aveNicName')).ipConfigurations[0].properties.privateIPAddress, '/avi')]"
         }
     }
 }

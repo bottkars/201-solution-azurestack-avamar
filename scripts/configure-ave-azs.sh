@@ -30,7 +30,6 @@ chmod 755 jq-linux64
 chmod +X  jq-linux64
 mv jq-linux64 /usr/local/bin/jq
 export PATH=/opt/emc-tools/bin:$PATH
-printenv
 
 function get_setting() {
   key=$1
@@ -49,6 +48,8 @@ AVE_UPGRADE_CLIENT_DOWNLOADS_URL=$(get_setting AVE_UPGRADE_CLIENT_DOWNLOADS_URL)
 AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE=$(get_setting AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE)
 AVE_PASSWORD=$(get_setting AVE_PASSWORD)
 AVE_COMMON_PASSWORD=$(get_setting AVE_COMMON_PASSWORD)
+AVE_TIMEZONE=$(get_setting AVE_TIMEZONE)
+AVE_EXTERNAL_FQDN=$(get_setting AVE_EXTERNAL_FQDN)
 EXTERNAL_HOSTNAME=$(get_setting EXTERNAL_HOSTNAME)
 
 
@@ -73,7 +74,9 @@ printf "."
 sleep 5
 done
 echo "ave-config ready"
-AVE_TIMEZONE="Europe/Berlin"
+
+if [[ -z  ${AVE_EXTERNAL_FQDN} ]]
+then
 /opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" --install ave-config  \
     --input timezone_name="${AVE_TIMEZONE}" \
     --input common_password=${AVE_COMMON_PASSWORD} \
@@ -85,7 +88,20 @@ AVE_TIMEZONE="Europe/Berlin"
     --input admin_password_os=${AVE_COMMON_PASSWORD} \
     --input root_password_os=${AVE_COMMON_PASSWORD} \
     ${AVE_PASSWORD}
-
+else
+/opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" --install ave-config  \
+    --input timezone_name="${AVE_TIMEZONE}" \
+    --input common_password=${AVE_COMMON_PASSWORD} \
+    --input use_common_password=true \
+    --input repl_password=${AVE_COMMON_PASSWORD} \
+    --input rootpass=${AVE_COMMON_PASSWORD} \
+    --input mcpass=${AVE_COMMON_PASSWORD} \
+    --input viewuserpass=${AVE_COMMON_PASSWORD} \
+    --input admin_password_os=${AVE_COMMON_PASSWORD} \
+    --input root_password_os=${AVE_COMMON_PASSWORD} \
+    --input rmi_address=${AVE_EXTERNAL_FQDN} \
+    ${AVE_PASSWORD}
+fi
 if [[ -z  ${AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE} ]]
 then
     unset AVE_UPGRADE_CLIENT_DOWNLOADS_URL
@@ -103,7 +119,7 @@ then
         sleep 5
     done
     echo "${AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE} Accepted"
-    echo "Starting Installation, this could take 40 Mintes"
+    echo "Starting Installation, this could take 40 Minutes"
     /opt/emc-tools/bin/avi-cli --user root --password "${AVE_COMMON_PASSWORD}" \
     --install upgrade-client-downloads localhost
     echo "Done installing UpgradeClientDownloads"
