@@ -11,6 +11,9 @@
         "aveImageURI": {
             "value": "https://opsmanagerimage.blob.local.azurestack.external/images/AZURE-AVE-19.2.0.155.vhd"
         },
+        "aveTimeZone": {
+            "value": "Europe/Berlin"
+        },
         "aveName": {
             "value": "aveazs1"
         },
@@ -29,7 +32,6 @@
         "aveUsername": {
             "value": "avamaruser"
         },
-        
         "aveVhd": {
             "value": "AZURE-AVE-19.2.0.155.vhd"
         },
