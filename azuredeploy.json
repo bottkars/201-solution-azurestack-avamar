@@ -29,7 +29,7 @@
         },
         "aveName": {
             "type": "string",
-            "defaultValue": "aveazs1",
+            "defaultValue": "nveazs1",
             "maxLength": 10,
             "metadata": {
                 "description": "Name of the AVE virtual machine"
@@ -1073,7 +1073,7 @@
                             "AVE_UPGRADE_CLIENT_DOWNLOADS_PACKAGE": "[parameters('aveUpgradeClientDownloadsPackage')]",
                             "AVE_COMMON_PASSWORD": "[parameters('aveCommonPassword')]",
                             "AVE_PASSWORD": "[reference(variables('aveNicName')).ipConfigurations[0].properties.privateIPAddress]",
-                            "AVE_EXTERNAL_FQDN": "[reference(variables('avePublicIPName')).dnsSettings.fqdn]",
+                            "AVE_EXTERNAL_FQDN": "[if(equals(parameters('aveNetworkInterfaceType'), 'public'), reference(variables('avePublicIPName'),'2017-10-01').dnsSettings.fqdn,'')]",
                             "EXTERNAL_HOSTNAME": "[variables('aveExternalHostname')]"
                         }
                     }

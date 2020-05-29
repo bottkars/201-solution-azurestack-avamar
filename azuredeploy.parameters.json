@@ -11,11 +11,11 @@
         "aveImageURI": {
             "value": "https://opsmanagerimage.blob.local.azurestack.external/images/AZURE-AVE-19.2.0.155.vhd"
         },
-        "aveTimeZone": {
-            "value": "Europe/Berlin"
-        },
         "aveName": {
-            "value": "aveazs1"
+            "value": "nveazs1"
+        },
+        "aveNetworkInterfaceType": {
+            "value": "## TO BE DEFINED ##"
         },
         "avePasswordOrKey": {
             "value": "Change_Me12345_"
@@ -23,11 +23,14 @@
         "aveSizeInTB": {
             "value": "2"
         },
+        "aveTimeZone": {
+            "value": "Europe/Berlin"
+        },
         "aveUpgradeClientDownloadsPackage": {
             "value": "UpgradeClientDownloads-19.2.0-155.avp"
         },
         "aveUpgradeClientDownloadsURI": {
-            "value": "https://opsmanagerimage.blob.local.azurestack.external/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=2020-05-30T13:42:54Z&st=2020-05-24T05:42:54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9Ps%3D"
+            "value": "https://opsmanagerimage.blob.local.azurestack.exter            nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202            0-05-30T13:            42:            54Z&st=2020-05-24T05:            42: 54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P            s%3D"
         },
         "aveUsername": {
             "value": "avamaruser"
@@ -49,9 +52,6 @@
         },
         "vnetSubnetName": {
             "value": "Subnet1"
-        },
-        "aveNetworkInterfaceType": {
-            "value": "Public"
         }
     }
 }
