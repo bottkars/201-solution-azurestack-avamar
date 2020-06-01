@@ -29,7 +29,7 @@
         },
         "aveName": {
             "type": "string",
-            "defaultValue": "nveazs1",
+            "defaultValue": "aveazs1",
             "maxLength": 10,
             "metadata": {
                 "description": "Name of the AVE virtual machine"

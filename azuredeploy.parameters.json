@@ -12,10 +12,10 @@
             "value": "https://opsmanagerimage.blob.local.azurestack.external/images/AZURE-AVE-19.2.0.155.vhd"
         },
         "aveName": {
-            "value": "nveazs1"
+            "value": "aveazs1"
         },
         "aveNetworkInterfaceType": {
-            "value": "## TO BE DEFINED ##"
+            "value": "public"
         },
         "avePasswordOrKey": {
             "value": "Change_Me12345_"
