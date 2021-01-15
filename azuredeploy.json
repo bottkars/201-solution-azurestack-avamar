@@ -148,7 +148,7 @@
         "apiVersion": "2017-06-01",
         "aveDataDisk": "[concat(parameters('aveName'), '-datadisk')]",
         "aveDataDiskSize": 931,
-        "aveExternalHostname": "node",
+        "aveExternalHostname": "aveazs1",
         "aveIPAllocationMethod": "Static",
         "aveNicName": "[concat(parameters('aveName'), '-nic-0')]",
         "aveNsg": "[concat(parameters('aveName'), '-nsg')]",
