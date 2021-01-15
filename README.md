@@ -36,6 +36,12 @@ az deployment group create  \
 --resource-group ave_from_cli
 ```
 
+
+```
+--template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
+--parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
+--resource-group ave_from_cli
+```
 delete
 
 ```azurecli-interactive
