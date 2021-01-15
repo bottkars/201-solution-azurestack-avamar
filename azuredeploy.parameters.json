@@ -9,7 +9,7 @@
             "value": "Change_Me12345_"
         },
         "aveImageURI": {
-            "value": "https://opsmanagerimage.blob.local.azurestack.external/images/AZURE-AVE-19.2.0.155.vhd"
+            "value": "https://opsmanagerimage.blob.local.azurestack.external/images/Avamar/19.4/AZURE-AVE-19.4.0.116.vhd"
         },
         "aveName": {
             "value": "aveazs1"
@@ -27,22 +27,22 @@
             "value": "Europe/Berlin"
         },
         "aveUpgradeClientDownloadsPackage": {
-            "value": "UpgradeClientDownloads-19.2.0-155.avp"
+            "value": ""
         },
         "aveUpgradeClientDownloadsURI": {
-            "value": "https://opsmanagerimage.blob.local.azurestack.exter            nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202            0-05-30T13:            42:            54Z&st=2020-05-24T05:            42: 54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P            s%3D"
+            "value": ""
         },
         "aveUsername": {
             "value": "avamaruser"
         },
         "aveVhd": {
-            "value": "AZURE-AVE-19.2.0.155.vhd"
+            "value": "AZURE-AVE-19.4.0.116.vhd"
         },
         "diagnosticsStorageAccountExistingResourceGroup": {
             "value": "registry"
         },
         "diagnosticsStorageAccountName": {
-            "value": "ckboxhxdal63isalinuxvm"
+            "value": "rrhsxj7mszy3gsalinuxvm"
         },
         "vnetExistingResourceGroup": {
             "value": "registry"
