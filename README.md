@@ -38,6 +38,7 @@ az deployment group create  \
 
 
 ```
+az deployment group create  \
 --template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
 --parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
 --resource-group ave_from_cli
