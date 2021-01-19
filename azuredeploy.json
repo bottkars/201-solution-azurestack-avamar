@@ -1074,7 +1074,13 @@
                             "AVE_COMMON_PASSWORD": "[parameters('aveCommonPassword')]",
                             "AVE_PASSWORD": "[reference(variables('aveNicName')).ipConfigurations[0].properties.privateIPAddress]",
                             "AVE_EXTERNAL_FQDN": "[if(equals(parameters('aveNetworkInterfaceType'), 'public'), reference(variables('avePublicIPName'),'2017-10-01').dnsSettings.fqdn,'')]",
-                            "EXTERNAL_HOSTNAME": "[variables('aveExternalHostname')]"
+                            "EXTERNAL_HOSTNAME": "[variables('aveExternalHostname')]",                            
+                            "AVE_ADD_DATADOMAIN_CONFIG": "false",
+                            "AVE_DATADOMAIN_HOST": "ddhost",
+                            "AVE_DDBOOST_USER": "ddboost",
+                            "AVE_DDBOOST_USER_PWD": "boostpwd",
+                            "AVE_DATADOMAIN_SYSADMIN": "sysadmin",
+                            "AVE_DATADOMAIN_SYSADMIN_PWD": "Change_Me12345_"
                         }
                     }
                 }
