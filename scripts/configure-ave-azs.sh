@@ -87,6 +87,17 @@ then
     --input viewuserpass=${AVE_COMMON_PASSWORD} \
     --input admin_password_os=${AVE_COMMON_PASSWORD} \
     --input root_password_os=${AVE_COMMON_PASSWORD} \
+    --input keystore_passphrase=${AVE_COMMON_PASSWORD} \
+    --input add_datadomain_config=${AVE_ADD_DATADOMAIN_CONFIG} \
+    --input attach_dd_with_cert=false \
+    --input accept_eula=true \
+    --input datadomain_host=${AVE_DATADOMAIN_HOST} \
+    --input ddboost_user=${AVE_DDBOOST_USER} \
+    --input ddboost_user_pwd=${AVE_DDBOOST_USER_PWD} \
+    --input ddboost_user_pwd_cf=${AVE_DDBOOST_USER_PWD} \
+    --input datadomain_sysadmin=${AVE_DATADOMAIN_SYSADMIN} \
+    --input datadomain_sysadmin_pwd=${AVE_DATADOMAIN_SYSADMIN_PWD} \
+    --input datadomain_snmp_string=public \
     ${AVE_PASSWORD}
 else
 /opt/emc-tools/bin/avi-cli --user root --password "${AVE_PASSWORD}" --install ave-config  \
@@ -99,6 +110,17 @@ else
     --input viewuserpass=${AVE_COMMON_PASSWORD} \
     --input admin_password_os=${AVE_COMMON_PASSWORD} \
     --input root_password_os=${AVE_COMMON_PASSWORD} \
+    --input keystore_passphrase=${AVE_COMMON_PASSWORD} \
+    --input add_datadomain_config=${AVE_ADD_DATADOMAIN_CONFIG} \
+    --input attach_dd_with_cert=false \
+    --input accept_eula=true \
+    --input datadomain_host=${AVE_DATADOMAIN_HOST} \
+    --input ddboost_user=${AVE_DDBOOST_USER} \
+    --input ddboost_user_pwd=${AVE_DDBOOST_USER_PWD} \
+    --input ddboost_user_pwd_cf=${AVE_DDBOOST_USER_PWD} \
+    --input datadomain_sysadmin=${AVE_DATADOMAIN_SYSADMIN} \
+    --input datadomain_sysadmin_pwd=${AVE_DATADOMAIN_SYSADMIN_PWD} \
+    --input datadomain_snmp_string=public \
     --input rmi_address=${AVE_EXTERNAL_FQDN} \
     ${AVE_PASSWORD}
 fi
