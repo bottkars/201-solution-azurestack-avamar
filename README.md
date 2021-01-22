@@ -6,6 +6,41 @@ Prework and Requirements:
   -  Have Custom Script for Linux extensions Available on AzureStackHub
   -  Upload Avamar AVE VHD for Azure* to Blob in Subscription
 
+Patch /usr/local/avamar/bin/setnet.lib
+
+detectHyperV() {
+    isHV=n
+    isAZ=n
+    grep -A 2 "scsi" /proc/scsi/scsi | grep -qi "msft"
+    if [ $? -eq 0 ]; then
+        # Its HyperV
+        important "Hyper-V environment detected"
+        isHV="y"
+        hypervisorDetected=2
+
+        # see if its also Azure
+        MDATA=`curl -s $AZUREMETADATAURL`
+        if [ $? -eq 0 ]; then
+            # May be Azure since we got metadata from curl
+            JUNK=`echo $MDATA | egrep '^[{].+ID.+UD.+[}]'`
+            if [ $? -eq 0 ]; then
+              # Azure since we got proper metadata from curl
+              isAZ=y
+              important "Azure environment detected"
+              hypervisorDetected=3
+            else
+## insert here for AzureStack            
+              important "AzureStack environment detected"
+              isAZ=y
+              hypervisorDetected=3
+## End insert, 
+# comment next line              
+#           warn "Got '$MDATA' from 'curl -s $AZUREMETADATAURL' but not recognized as Azure so ignoring"
+            fi
+        fi
+    fi
+}
+
 Optional:
 If AVEUpgradeClientDownload URI and Package are Specified, the Custom Script
 will try to install the Avamar Client Packages
