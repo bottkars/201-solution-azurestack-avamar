@@ -83,3 +83,38 @@ delete
 ```azurecli-interactive
 az group delete --name ave_from_cli  -y
 ```
+
+
+## Gitops Direnv
+
+
+
+
+```azurecli-interactive
+az group create --name ${AZS_RESOURCE_GROUP} \
+  --location ${AZS_LOCATION}
+```
+
+```azurecli-interactive
+az deployment group validate  \
+--template-file $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.json \
+--parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
+--parameters aveName=${AZS_HOSTNAME} \
+--parameters aveImageURI=${AZS_IMAGE_URI} \
+--parameters aveUpgradeClientDownloadsPackage="" \
+--resource-group ${AZS_RESOURCE_GROUP}
+```
+
+```azurecli-interactive
+az deployment group create  \
+--template-file $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.json \
+--parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
+--parameters aveName=${AZS_HOSTNAME} \
+--parameters aveImageURI=${AZS_IMAGE_URI} \
+--parameters aveUpgradeClientDownloadsPackage="" \
+--resource-group ${AZS_RESOURCE_GROUP}
+```
+
+```
+az group delete --name ${AZS_RESOURCE_GROUP}
+```

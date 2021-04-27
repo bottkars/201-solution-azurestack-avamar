@@ -81,13 +81,6 @@
         },
         "aveUpgradeClientDownloadsURI": {
             "type": "string",
-            "defaultValue": "https://opsmanagerimage.blob.local.azurestack.exter
-            nal/packages/UpgradeClientDownloads-19.2.0-155.avp?sv=2017-04-17&ss=bqt&srt=sco&sp=rwdlacup&se=202
-            0-05-30T13:
-            42:
-            54Z&st=2020-05-24T05:
-            42: 54Z&spr=https&sig=tjgTdJqheRDNMn4aS1TgkLOulpfe8IKLN1ofHt9U9P
-            s%3D",
             "metadata": {
                 "description": "Curlable URL encoded Link to Avamar UpgradeClientDownloads Package (S3 Shareable or Azure SAS Blob URL)"
             }
