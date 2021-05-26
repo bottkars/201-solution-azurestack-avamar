@@ -7,8 +7,22 @@ Prework and Requirements:
   -  Upload Avamar AVE VHD for Azure* to Blob in Subscription
 
 ## create a VHD from OVA:
-sudo apt install p7zip-full
+### install qemu-utils and p7zip
+```bash
+sudo apt install p7zip-full qemu-utils
+``` 
+
+### Extract and Convert
+```
 7z e AVE-19.4.0.116.ova
+
+qemu-img convert -f vmdk -o subformat=fixed,force_size -O vpc AVE-19.4.0.116-disk1.vmdk AVE-19.4.0.116-disk1.vhd
+``` 
+
+
+```bash
+az storage blob upload-batch --account-name opsmanagerimage -d images --destination-path Avamar/19.4 --source ./ --pattern "AVE-19.4.0.116-disk*.vhd"
+```
 
 
 
