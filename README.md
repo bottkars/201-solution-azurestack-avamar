@@ -6,8 +6,16 @@ Prework and Requirements:
   -  Have Custom Script for Linux extensions Available on AzureStackHub
   -  Upload Avamar AVE VHD for Azure* to Blob in Subscription
 
-Patch /usr/local/avamar/bin/setnet.lib
+## create a VHD from OVA:
+sudo apt install p7zip-full
+7z e AVE-19.4.0.116.ova
 
+
+
+
+
+Patch /usr/local/avamar/bin/setnet.lib
+```bash
 detectHyperV() {
     isHV=n
     isAZ=n
@@ -40,6 +48,7 @@ detectHyperV() {
         fi
     fi
 }
+```
 
 Optional:
 If AVEUpgradeClientDownload URI and Package are Specified, the Custom Script
