@@ -1,39 +1,35 @@
-﻿# 201-solution-azurestack-avamar
+# 201-solution-azurestack-avamar
 
 This Template Deploys and Configures DELL|EMC Avamar Virtual Edition onto Azurestack
 
 Prework and Requirements:
   -  Have Custom Script for Linux extensions Available on AzureStackHub
-  -  Upload Avamar AVE VHD for Azure* to Blob in Subscription
-## How TO get Avamar VHD forAzureStack
+  -  Upload Avamar AVE VHD for Azure to Blob in Subscription
+  -  Mont the vhd to a linux vm and modify the cloud detection script
+  -  
+## How To create the Avamar VHD for AzureStack
 We need to get the Avamar Azure vhd. It is Available from >Dell Support. Keep in mind, it has 180GB in Size when extracted.
 There are Multiple Methods how to obtain The Image, the Preerred one is Method 1.
-### Method 1: 
+### Obtaining the Image: 
 Download the Azure Version from Dell Support (Login required)
 [Avamar 19.4 Virtual Edition for Microsoft (Azure) Cloud](https://dl.dell.com/downloads/DL100999_Avamar-19.4-Virtual-Edition-for-Microsoft-(Azure)-Cloud.7z)
 
 
 
-### Method 2:create a VHD from OVA (does not include waagent, so needs to be applied )
-#### install qemu-utils and p7zip
+### Expand and upload the Image
+
 ```bash
-sudo apt install p7zip-full qemu-utils
+7z e AZURE-AVE-19.4.0.116.vhd.7z
 ``` 
 
-#### Extract and Convert
-```
-7z e AVE-19.4.0.116.ova
-
-qemu-img convert -f vmdk -o subformat=fixed,force_size -O vpc AVE-19.4.0.116-disk1.vmdk AVE-19.4.0.116-disk1.vhd
-``` 
+Use Azure CLI or AzureSTack Portal to upload the image to a blob container:
 
 
 ```bash
-az storage blob upload-batch --account-name opsmanagerimage -d images --destination-path Avamar/19.4 --source ./ --pattern "AVE-19.4.0.116-disk*.vhd"
+ACCOUNT_NAME=opsmanagerimage
+DESTINATION="Avamar/19.4"
+az storage blob upload-batch --account-name ${ACCOUNT_NAME} -d images --destination-path ${DESTINATION} --source ./ --pattern "AVE-19.4.0.116-disk*.vhd"
 ```
-
-
-
 
 
 ## Patch /usr/local/avamar/bin/setnet.lib
@@ -154,3 +150,15 @@ az deployment group create  \
 ```
 az group delete --name ${AZS_RESOURCE_GROUP}
 ```
+## Alternate Method for Creating a VHD, e.g from OVA (does not include waagent, so needs to be applied )
+#### install qemu-utils and p7zip
+```bash
+sudo apt install p7zip-full qemu-utils
+``` 
+
+#### Extract and Convert
+```
+7z e AVE-19.4.0.116.ova
+
+qemu-img convert -f vmdk -o subformat=fixed,force_size -O vpc AVE-19.4.0.116-disk1.vmdk AVE-19.4.0.116-disk1.vhd
+``` 
