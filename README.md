@@ -133,8 +133,13 @@ az deployment group validate  \
 --parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
 --parameters aveName=${AZS_HOSTNAME} \
 --parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="" \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
+--parameters vnetName=${AZS_vnetName} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName} \
 --resource-group ${AZS_RESOURCE_GROUP}
+
 ```
 
 ```azurecli-interactive
@@ -143,7 +148,11 @@ az deployment group create  \
 --parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
 --parameters aveName=${AZS_HOSTNAME} \
 --parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="" \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
+--parameters vnetName=${AZS_vnetName} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName} \
 --resource-group ${AZS_RESOURCE_GROUP}
 ```
 
