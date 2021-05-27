@@ -30,7 +30,7 @@
             "value": "UpgradeClientDownloads-19.4.0-116.avp"
         },
         "aveUpgradeClientDownloadsURI": {
-            "value": "https://opsmanagerimage.blob.local.azurestack.external/packages/Avamar/19.4/UpgradeClientDownloads-19.4.0-116.avp?sp=r&st=2021-05-26T13:25:39Z&se=2021-05-26T21:25:39Z&spr=https&sv=2019-02-02&sr=b&sig=VZ0G42zn9UrSYHZUqFyzlxhdyO4Ar905JVPk6wVMyX0%3D"
+            "value": "https://opsmanagerimage.blob.local.azurestack.external/packages/Avamar/19.4/UpgradeClientDownloads-19.4.0-116.avp?sp=r&st=2021-05-27T09:51:35Z&se=2022-05-27T17:51:35Z&spr=https&sv=2019-02-02&sr=b&sig=x50U4dYtf7g%2FKBvlgwLQysGToB3UAqIQKzyq1O1H%2BUk%3D"
         },
         "aveUsername": {
             "value": "avamaruser"
