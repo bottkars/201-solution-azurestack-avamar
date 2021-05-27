@@ -5,14 +5,22 @@ This Template Deploys and Configures DELL|EMC Avamar Virtual Edition onto Azures
 Prework and Requirements:
   -  Have Custom Script for Linux extensions Available on AzureStackHub
   -  Upload Avamar AVE VHD for Azure* to Blob in Subscription
+## How TO get Avamar VHD forAzureStack
+We need to get the Avamar Azure vhd. It is Available from >Dell Support. Keep in mind, it has 180GB in Size when extracted.
+There are Multiple Methods how to obtain The Image, the Preerred one is Method 1.
+### Method 1: 
+Download the Azure Version from Dell Support (Login required)
+[Avamar 19.4 Virtual Edition for Microsoft (Azure) Cloud](https://dl.dell.com/downloads/DL100999_Avamar-19.4-Virtual-Edition-for-Microsoft-(Azure)-Cloud.7z)
 
-## create a VHD from OVA:
-### install qemu-utils and p7zip
+
+
+### Method 2:create a VHD from OVA (does not include waagent, so needs to be applied )
+#### install qemu-utils and p7zip
 ```bash
 sudo apt install p7zip-full qemu-utils
 ``` 
 
-### Extract and Convert
+#### Extract and Convert
 ```
 7z e AVE-19.4.0.116.ova
 
@@ -28,7 +36,12 @@ az storage blob upload-batch --account-name opsmanagerimage -d images --destinat
 
 
 
-Patch /usr/local/avamar/bin/setnet.lib
+## Patch /usr/local/avamar/bin/setnet.lib
+Avamar detects the CLoud t runś on Upon first boot. This will modify some behaviour for services like wicked, dhcp, boot and reseource disks.
+Once Uploaded to a Storage Account, 
+In order to make Avamar be happy with Azure Stack, modify the following Lines in the detectHyperv() function in the vhd in /usr/local/avamar/bin/setnet.lib
+
+
 ```bash
 detectHyperV() {
     isHV=n
