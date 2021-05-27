@@ -9,7 +9,7 @@
             "value": "Change_Me12345_"
         },
         "aveImageURI": {
-            "value": "https://opsmanagerimage.blob.local.azurestack.external/images/Avamar/19.4/AVE-19.4.0.116-disk1.vhd"
+            "value": "https://opsmanagerimage.blob.local.azurestack.external/images/Avamar/19.4/AZURE-AVE-19.4.0.116.vhd"
         },
         "aveName": {
             "value": "aveazs1"
@@ -36,7 +36,7 @@
             "value": "avamaruser"
         },
         "aveVhd": {
-            "value": "AVE-19.4.0.116-disk1.vhd"
+            "value": "AZURE-AVE-19.4.0.116.vhd"
         },
         "diagnosticsStorageAccountExistingResourceGroup": {
             "value": "registry"
