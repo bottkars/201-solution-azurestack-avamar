@@ -116,8 +116,51 @@ delete
 az group delete --name ave_from_cli  -y
 ```
 
+## Gitops Direnv Github
 
-## Gitops Direnv
+
+
+
+```azurecli-interactive
+az group create --name ${AZS_RESOURCE_GROUP} \
+  --location ${AZS_LOCATION}
+```
+
+```azurecli-interactive
+az deployment group validate  \
+--template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
+--parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
+--parameters aveName=${AZS_HOSTNAME} \
+--parameters aveImageURI=${AZS_IMAGE_URI} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
+--parameters vnetName=${AZS_vnetName} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName} \
+--resource-group ${AZS_RESOURCE_GROUP}
+
+```
+
+```azurecli-interactive
+az deployment group create  \
+--template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
+--parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
+--parameters aveName=${AZS_HOSTNAME} \
+--parameters aveImageURI=${AZS_IMAGE_URI} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
+--parameters vnetName=${AZS_vnetName} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName} \
+--resource-group ${AZS_RESOURCE_GROUP}
+```
+
+```
+az group delete --name ${AZS_RESOURCE_GROUP}
+```
+
+
+## Gitops Direnv locally
 
 
 
