@@ -133,7 +133,7 @@ az deployment group validate  \
 --parameters aveName=${AZS_HOSTNAME:?variable is empty} \
 --parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
 --parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
---parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}" \
 --parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
 --parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
 --parameters vnetName=${AZS_vnetName:?variable is empty} \
@@ -150,7 +150,7 @@ az deployment group create  \
 --parameters aveName=${AZS_HOSTNAME:?variable is empty} \
 --parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
 --parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
---parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}" \
 --parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
 --parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
 --parameters vnetName=${AZS_vnetName:?variable is empty} \
@@ -177,10 +177,10 @@ az group create --name ${AZS_RESOURCE_GROUP} \
 az deployment group validate  \
 --template-file $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.json \
 --parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
----parameters aveName=${AZS_HOSTNAME:?variable is empty} \
+--parameters aveName=${AZS_HOSTNAME:?variable is empty} \
 --parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
 --parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
---parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}" \
 --parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
 --parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
 --parameters vnetName=${AZS_vnetName:?variable is empty} \
@@ -196,7 +196,7 @@ az deployment group create  \
 --parameters aveName=${AZS_HOSTNAME:?variable is empty} \
 --parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
 --parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
---parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}" \
 --parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
 --parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
 --parameters vnetName=${AZS_vnetName:?variable is empty} \
