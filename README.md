@@ -130,14 +130,16 @@ az group create --name ${AZS_RESOURCE_GROUP} \
 az deployment group validate  \
 --template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
 --parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
---parameters aveName=${AZS_HOSTNAME} \
---parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
---parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
---parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
---parameters vnetName=${AZS_vnetName} \
---parameters vnetSubnetName=${AZS_vnetSubnetName} \
---resource-group ${AZS_RESOURCE_GROUP}
+--parameters aveName=${AZS_HOSTNAME}:?variable is empty \
+--parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
+--parameters vnetName=${AZS_vnetName:?variable is empty} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName:?variable is empty} \
+--resource-group ${AZS_RESOURCE_GROUP:?variable is empty}
+
 
 ```
 
@@ -145,14 +147,15 @@ az deployment group validate  \
 az deployment group create  \
 --template-uri https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.json \
 --parameters https://raw.githubusercontent.com/bottkars/201-solution-azurestack-avamar/master/azuredeploy.parameters.json \
---parameters aveName=${AZS_HOSTNAME} \
---parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
---parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
---parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
---parameters vnetName=${AZS_vnetName} \
---parameters vnetSubnetName=${AZS_vnetSubnetName} \
---resource-group ${AZS_RESOURCE_GROUP}
+--parameters aveName=${AZS_HOSTNAME}:?variable is empty \
+--parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
+--parameters vnetName=${AZS_vnetName:?variable is empty} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName:?variable is empty} \
+--resource-group ${AZS_RESOURCE_GROUP:?variable is empty}
 ```
 
 ```
@@ -174,14 +177,15 @@ az group create --name ${AZS_RESOURCE_GROUP} \
 az deployment group validate  \
 --template-file $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.json \
 --parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
---parameters aveName=${AZS_HOSTNAME} \
---parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
---parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
---parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
---parameters vnetName=${AZS_vnetName} \
---parameters vnetSubnetName=${AZS_vnetSubnetName} \
---resource-group ${AZS_RESOURCE_GROUP}
+--parameters aveName=${AZS_HOSTNAME}:?variable is empty \
+--parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
+--parameters vnetName=${AZS_vnetName:?variable is empty} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName:?variable is empty} \
+--resource-group ${AZS_RESOURCE_GROUP:?variable is empty}
 
 ```
 
@@ -189,14 +193,15 @@ az deployment group validate  \
 az deployment group create  \
 --template-file $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.json \
 --parameters $HOME/workspace/201-solution-azurestack-avamar/azuredeploy.parameters.json \
---parameters aveName=${AZS_HOSTNAME} \
---parameters aveImageURI=${AZS_IMAGE_URI} \
---parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE}" \
---parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup} \
---parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName} \
---parameters vnetName=${AZS_vnetName} \
---parameters vnetSubnetName=${AZS_vnetSubnetName} \
---resource-group ${AZS_RESOURCE_GROUP}
+--parameters aveName=${AZS_HOSTNAME}:?variable is empty \
+--parameters aveImageURI=${AZS_IMAGE_URI:?variable is empty} \
+--parameters aveUpgradeClientDownloadsPackage="${AZS_PACKAGE:?variable is empty}" \
+--parameters aveUpgradeClientDownloadsURI="${AZS_PACKAGE_URI:?variable is empty}"
+--parameters diagnosticsStorageAccountExistingResourceGroup=${AZS_diagnosticsStorageAccountExistingResourceGroup:?variable is empty} \
+--parameters diagnosticsStorageAccountName=${AZS_diagnosticsStorageAccountName:?variable is empty} \
+--parameters vnetName=${AZS_vnetName:?variable is empty} \
+--parameters vnetSubnetName=${AZS_vnetSubnetName:?variable is empty} \
+--resource-group ${AZS_RESOURCE_GROUP:?variable is empty}
 ```
 
 ```
